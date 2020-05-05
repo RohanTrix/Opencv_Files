@@ -15,7 +15,7 @@ sobelY = np.uint8(np.absolute(sobelY))
 #to combine sobelX and sobelY
 sobelCombined = cv2.bitwise_or(sobelX,sobelY)
 
-#Really good edge detection mechanism
+#Good edge detection mechanism
 canny = cv2.Canny(img, 100,200)
 titles = ['images','Laplacian','sobelX','sobelY','sobelCombined','canny']
 images = [img,lap,sobelX,sobelY,sobelCombined,canny]
