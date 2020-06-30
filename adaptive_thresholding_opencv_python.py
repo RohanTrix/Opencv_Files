@@ -1,5 +1,4 @@
 import cv2 as cv
-import numpy as np
 
 img = cv.imread('Test_1006.jpg',0)
 screen_res = 1280, 720
