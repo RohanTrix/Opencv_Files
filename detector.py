@@ -2,16 +2,7 @@ import matplotlib.pyplot as plt
 import cv2
 import numpy as np
 
-image = cv2.imread('roads.png')
-image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
 
-height,width = image.shape[:2]
-
-region_of_interest_vertices = [
-    (0,height),
-    (width/2,height/2),
-    (width,height)
-    ]
 def region_of_interest(img,vertices):
     mask = np.zeros_like(img)
     #channel_count = img.shape[2]
@@ -29,28 +20,44 @@ def draw_the_lines(img,lines):
     img = cv2.addWeighted(img, 0.8,blank_image,0.2,0.0)
     return img
 
-gray_image = cv2.cvtColor(image,cv2.COLOR_RGB2GRAY)
+def process(image):
+    height,width = image.shape[:2]
+    
+    region_of_interest_vertices = [
+        (0,height),
+        (width/2,height/2),
+        (width,height)
+        ]
+    gray_image = cv2.cvtColor(image,cv2.COLOR_RGB2GRAY)
+    
+    
+    canny_image = cv2.Canny(gray_image,100,200)
+    
+    
+    
+    cropped_image = region_of_interest(canny_image,
+                                       np.array([region_of_interest_vertices],
+                                                np.int32))
+    
+    lines = cv2.HoughLinesP(cropped_image,rho = 6,theta = np.pi/60,threshold = 160
+                            ,lines = np.array([]),minLineLength = 40,
+                            maxLineGap = 25)
+    
+    
+    image_with_lines = draw_the_lines(image,lines)
+    return image_with_lines
 
-canny_image = cv2.Canny(gray_image,100,200)
 
+cap = cv2.VideoCapture('lane_test.mp4')
 
-
-cropped_image = region_of_interest(canny_image,
-                                   np.array([region_of_interest_vertices],
-                                            np.int32))
-
-lines = cv2.HoughLinesP(cropped_image,rho = 6,theta = np.pi/60,threshold = 160
-                        ,lines = np.array([]),minLineLength = 40,
-                        maxLineGap = 25)
-
-
-image_with_lines = draw_the_lines(image,lines)
-plt.imshow(image)
-plt.imshow(cropped_image)
-plt.imshow(image_with_lines)
-
-plt.show()
-
-
+while(cap.isOpened()):
+    ret,frame = cap.read()
+    frame = process(frame)
+    
+    cv2.imshow('Frame',frame)
+    if cv2.waitKey(1)== ord('q'):
+        break
+cap.release()
+cv2.destroyAllWindows()
 
 

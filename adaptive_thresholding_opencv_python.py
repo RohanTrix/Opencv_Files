@@ -1,7 +1,7 @@
 import cv2 as cv
 import numpy as np
 
-img = cv.imread('sudoku.png',0)
+img = cv.imread('Test_1006.jpg',0)
 screen_res = 1280, 720
 scale_width = screen_res[0] / img.shape[1]
 scale_height = screen_res[1] / img.shape[0]
