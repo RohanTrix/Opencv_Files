@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 img = cv2.imread('shapes.jpg')
 n_rows,n_cols = img.shape[:2]
 
