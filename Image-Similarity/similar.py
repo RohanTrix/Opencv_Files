@@ -49,8 +49,11 @@ for m, n in matches:
 
 print("Good Matches" ,len(good_points))
 
+number_keypoints = min(len(kp_1), len(kp_2))
 
+percent =(len(good_points)/ number_keypoints) * 100
 
+print("How good is the match: ",round(percent), "%")
 
 
 result = cv2.drawMatches(org, kp_1, 
