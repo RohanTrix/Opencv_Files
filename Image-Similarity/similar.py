@@ -2,7 +2,13 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 org = cv2.imread('main_img.png')
-img_to_compare = cv2.imread('test1.png')
+img_to_compare = cv2.imread('test2.png')
+
+#######################
+plt.imshow(org)
+#######################
+org = org[88:682, 508: 843]
+img_to_compare = img_to_compare[88:682, 508: 843]
 
 cv2.imshow('Main',org)
 cv2.imshow('test',img_to_compare)
@@ -29,6 +35,10 @@ flann = cv2.FlannBasedMatcher(index_params, search_params)
         
 matches = flann.knnMatch(desc_1, desc_2, k = 2)
 print(len(matches))
+
+
+good_points = []
+
 
 result = cv2.drawMatchesKnn(org, kp_1, 
                          img_to_compare, kp_2,
