@@ -3,6 +3,8 @@ import cv2
 from matplotlib import pyplot as plt
 from tkinter.filedialog import askopenfilename
 
+filename1 = "test1.png"
+filename2 = "test2.png"
 
 img1=cv2.imread(filename1,4)
 img2=cv2.imread(filename2,4)
