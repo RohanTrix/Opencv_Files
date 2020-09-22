@@ -30,8 +30,12 @@ flann = cv2.FlannBasedMatcher(index_params, search_params)
 matches = flann.knnMatch(desc_1, desc_2, k = 2)
 print(len(matches))
 
-result = cv2.drawMatches(org, kp_1, 
+result = cv2.drawMatchesKnn(org, kp_1, 
                          img_to_compare, kp_2,
-                         matches,None)
+                         matches,None, flags=2)
+
+cv2.imshow('Matched',result)
+
+
 cv2.waitKey(0)
 cv2.destroyAllWindows()
