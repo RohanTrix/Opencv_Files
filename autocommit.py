@@ -3,7 +3,6 @@ import time
 while(True):
     if os.system('git diff --exit-code')==0:
         print("git diff is 0")
-        time.sleep(60)
         f = open('dummy.txt','w')
         f.write(str(time.time()))
         f.close()
