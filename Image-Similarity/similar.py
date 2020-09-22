@@ -30,13 +30,15 @@ sift = cv2.xfeatures2d.SIFT_create()
 kp_1, desc_1 = sift.detectAndCompute(org, None)
 kp_2, desc_2 = sift.detectAndCompute(img_to_compare, None)
 
+
+print("Key Points IMG1", len(kp_1))
+print("Key Points IMG2", len(kp_2))
 index_params = dict(algorithm=0, trees=5)
 search_params = dict()
 
 flann = cv2.FlannBasedMatcher(index_params, search_params)  
         
 matches = flann.knnMatch(desc_1, desc_2, k = 2)
-print(len(matches))
 
 
 good_points = []
@@ -45,7 +47,12 @@ for m, n in matches:
     if m.distance < 0.4* n.distance:
         good_points.append(m)
 
-print(len(good_points))
+print("Good Matches" ,len(good_points))
+
+
+
+
+
 result = cv2.drawMatches(org, kp_1, 
                          img_to_compare, kp_2,
                          good_points,None, flags=2)
