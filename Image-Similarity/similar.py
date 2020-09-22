@@ -1,8 +1,10 @@
+#OPENCV 3.4.2
+
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 org = cv2.imread('main_img.png')
-img_to_compare = cv2.imread('test2.png')
+img_to_compare = cv2.imread('test1.png')
 
 
 org = org[88:682, 508: 843]
@@ -40,7 +42,7 @@ print(len(matches))
 good_points = []
 
 for m, n in matches:
-    if m.distance < 0.6* n.distance:
+    if m.distance < 0.4* n.distance:
         good_points.append(m)
 
 print(len(good_points))
