@@ -15,7 +15,6 @@ cv2.imshow('test',img_to_compare)
 same_image = False
 if org.shape == img_to_compare.shape:
     diff = cv2.subtract(img_to_compare, org)
-    cv2.imshow('Subtract', diff)
     b, g, r = cv2.split(diff)
     if cv2.countNonZero(b) == 0 and cv2.countNonZero(g)==0 and cv2.countNonZero(r):
         same_image = True
@@ -39,10 +38,14 @@ print(len(matches))
 
 good_points = []
 
+for m, n in matches:
+    if m.distance < 0.6* n.distance:
+        good_points.append(m)
 
-result = cv2.drawMatchesKnn(org, kp_1, 
+print(len(good_points))
+result = cv2.drawMatches(org, kp_1, 
                          img_to_compare, kp_2,
-                         matches,None, flags=2)
+                         good_points,None, flags=2)
 
 cv2.imshow('Matched',result)
 
