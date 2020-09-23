@@ -1,5 +1,6 @@
 #OPENCV 3.4.2
 
+import sys
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -22,7 +23,7 @@ if org.shape == img_to_compare.shape:
         same_image = True
     if same_image:
         print('same image')
-        quit()
+        sys.exit()
 
 sift = cv2.xfeatures2d.SIFT_create()
 
