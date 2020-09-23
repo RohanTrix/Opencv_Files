@@ -3,7 +3,6 @@
 import sys
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
 org = cv2.imread('main_img.png')
 img_to_compare = cv2.imread('test2.png')
 
