@@ -1,5 +1,3 @@
-#OPENCV 3.4.2
-
 import sys
 import cv2
 import numpy as np
