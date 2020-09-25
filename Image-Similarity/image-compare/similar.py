@@ -63,6 +63,3 @@ def compare(source, targets):
                                 good_points,None, flags=2)
 
         cv2.imsave('../result-images/Matched/'+i+'.jpg',result)
-        df = pd.DataFrame({'name': [img_path],
-                   'percentage': [percent]})
-        df.to_csv(index=False)
