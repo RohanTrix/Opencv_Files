@@ -67,4 +67,4 @@ def compare(source, targets):
         new_row = {'name':img_path, 'percentage':percent}
         df.append(new_row,ignore_index = True)
 
-new_row = {'name':'Geo', 'physics':87, 'chemistry':92, 'algebra':97}
+df
