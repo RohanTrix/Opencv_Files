@@ -1,8 +1,8 @@
 import sys
 import cv2
 import numpy as np
-org = cv2.imread('images/main_img.png')
-img_to_compare = cv2.imread('images/test2.png')
+org = cv2.imread('../images/main_img.png')
+img_to_compare = cv2.imread('../images/test2.png')
 
 
 org = org[88:682, 508: 843]
