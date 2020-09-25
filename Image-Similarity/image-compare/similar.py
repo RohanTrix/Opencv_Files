@@ -1,12 +1,12 @@
 import sys
-import cv2
 import pandas as pd
 import numpy as np
+import cv2
 
 def compare(source, targets):
     org = cv2.imread(source)
-    for img in targets:
-        img_to_compare = cv2.imread(img)
+    for i,img_path in enumerate(targets):
+        img_to_compare = cv2.imread(img_path)
 
 
         org = org[88:682, 508: 843]
@@ -62,5 +62,8 @@ def compare(source, targets):
                                 img_to_compare, kp_2,
                                 good_points,None, flags=2)
 
-        cv2.imsave('Matched.jpg',result)
-        
+        cv2.imsave('../result-images/Matched/'+i+'.jpg',result)
+        df = pd.DataFrame({'name': [img_path],
+                   'percentage': [percent]})
+        df.to_csv(index=False)
+
