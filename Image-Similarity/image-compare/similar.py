@@ -62,4 +62,4 @@ def compare(source, targets):
                                 img_to_compare, kp_2,
                                 good_points,None, flags=2)
 
-        cv2.imsave('../result-images/Matched/'+i+'.jpg',result)
+        cv2.imsave('./result-images/Matched'+i+'.jpg',result)
