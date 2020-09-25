@@ -66,4 +66,3 @@ def compare(source, targets):
         df = pd.DataFrame({'name': [img_path],
                    'percentage': [percent]})
         df.to_csv(index=False)
-
