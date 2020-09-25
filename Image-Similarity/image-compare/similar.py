@@ -64,4 +64,5 @@ def compare(source, targets):
                                 good_points,None, flags=2)
 
         cv2.imsave('./result-images/Matched'+img_path,result)
-        
+        new_row = {'name':img_path, 'percentage':percent}
+        df.app
