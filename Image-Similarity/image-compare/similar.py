@@ -2,7 +2,8 @@ import sys
 import pandas as pd
 import numpy as np
 import cv2
-
+df = pd.DataFrame({'name': [],
+                   'percentage': []})
 def compare(source, targets):
     org = cv2.imread(source)
     for i,img_path in enumerate(targets):
