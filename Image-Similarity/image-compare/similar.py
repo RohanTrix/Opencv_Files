@@ -65,4 +65,6 @@ def compare(source, targets):
 
         cv2.imsave('./result-images/Matched'+img_path,result)
         new_row = {'name':img_path, 'percentage':percent}
-        df.app
+        df.append(new_row,ignore_index = True)
+
+new_row = {'name':'Geo', 'physics':87, 'chemistry':92, 'algebra':97}
